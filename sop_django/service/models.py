@@ -73,6 +73,12 @@ class College(models.Model):
     collegeCity = models.CharField(max_length=20)
     collegePhoneNumber = models.CharField(max_length=20)
 
+    def get_key(self):
+        return str(self.id)
+
+    def get_value(self):
+        return self.collegeName
+
     def to_json(self):
         data = {
             'id': self.id,

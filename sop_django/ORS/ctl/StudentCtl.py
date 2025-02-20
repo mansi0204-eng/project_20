@@ -9,6 +9,20 @@ from ..utility.HTMLUtility import HTMLUtility
 
 class StudentCtl(BaseCtl):
 
+    def preload(self, request, params):
+        self.form["college_ID"] = request.POST.get('college_ID', 0)
+
+        if (params['id'] > 0):
+            obj = self.get_service().get(params['id'])
+            self.form["college_ID"] = obj.college_ID
+        self.dynamic_preload = CollegeService().preload()
+
+        self.form["preload"]["college"] = HTMLUtility.get_list_from_objects(
+            'college_ID',
+            self.form["college_ID"],
+            self.dynamic_preload
+        )
+
     def request_to_form(self, requestForm):
         self.form['id'] = requestForm['id']
         self.form['firstName'] = requestForm['firstName']
