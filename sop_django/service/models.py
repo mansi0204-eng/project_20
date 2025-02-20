@@ -5,6 +5,14 @@ class Role(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
 
+    def get_key(self):
+        return str(self.id)
+
+    def get_value(self):
+        return self.name
+
+
+
     def to_json(self):
         data = {
             'id': self.id,
@@ -28,6 +36,14 @@ class User(models.Model):
     mobilenumber = models.CharField(max_length=50,default='')
     role_Id = models.IntegerField()
     role_Name = models.CharField(max_length=50)
+
+    def get_key(self):
+        return self.id
+
+    def get_value(self):
+        return self.firstName + ' ' + self.lastName
+
+
 
     def to_json(self):
         data = {
