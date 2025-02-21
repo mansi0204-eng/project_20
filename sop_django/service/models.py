@@ -105,6 +105,12 @@ class Course(models.Model):
     courseDescription = models.CharField(max_length=100)
     courseDuration = models.CharField(max_length=100)
 
+    def get_key(self):
+        return str(self.id)
+
+    def get_value(self):
+        return self.courseName
+
     def to_json(self):
         data = {
             'id': self.id,
@@ -210,6 +216,12 @@ class Subject(models.Model):
 
     course_ID = models.IntegerField()
     courseName = models.CharField(max_length=50)
+
+    def get_key(self):
+        return str(self.id)
+
+    def get_value(self):
+        return self.subjectName
 
     def to_json(self):
         data = {
