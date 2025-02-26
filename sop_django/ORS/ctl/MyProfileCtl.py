@@ -7,9 +7,7 @@ from service.service.UserService import UserService
 from service.service.RoleService import RoleService
 
 class MyProfileCtl(BaseCtl):
-    def preload(self, request):
-        self.page_list = RoleService().search(self.form)
-        self.preloadData = self.page_list
+
 
     # Populate Form from http request
     def request_to_form(self, requestForm):
@@ -84,7 +82,7 @@ class MyProfileCtl(BaseCtl):
         if( user.id > 0):
             r = self.get_service().get(user.id)
             self.model_to_form(r)
-        res = render(request, self.get_template(), {'form': self.form, 'roleList': self.preloadData})
+        res = render(request, self.get_template(), {'form': self.form})
         return res
 
 
