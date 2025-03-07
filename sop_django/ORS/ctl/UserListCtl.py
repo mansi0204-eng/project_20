@@ -24,7 +24,9 @@ class UserListCtl(BaseCtl):
         return res
 
     def next(self, request, params={}):
+        print("--",UserListCtl.count)
         UserListCtl.count += 1
+        print("--",UserListCtl.count)
         self.form['pageNo'] = UserListCtl.count
         record = self.get_service().search(self.form)
         self.page_list = record['data']

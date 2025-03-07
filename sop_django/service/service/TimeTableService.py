@@ -21,7 +21,7 @@ class TimeTableService(BaseService):
         sql = "select * from sos_timetable where 1=1"
         val = params.get("semester", None)
         if (DataValidator.isNotNull(val)):
-            sql += " and semester = '" + val + "' "
+            sql += " and semester like '" + val + "%%' "
         sql += " limit %s,%s"
         cursor = connection.cursor()
         print("-------------->", sql, pageNo, self.pageSize)
@@ -40,4 +40,3 @@ class TimeTableService(BaseService):
             params['MaxId'] = x[0]
             res['data'].append({columnName[i]: x[i] for i, _ in enumerate(x)})
         return res
-

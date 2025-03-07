@@ -10,21 +10,19 @@ It contains vehicle business logics
 
 class VehicleService(BaseService):
 
-
-
     def search(self, params):
         pageNo = (params['pageNo'] - 1) * self.pageSize
         sql = "select * from sos_vehicle where 1=1"
         val = params.get("vehicleName", None)
         if DataValidator.isNotNull(val):
-            sql += " and vehicleName = '" + val + "' "
+            sql += " and vehicleName like '" + val + "%%' "
         sql += " limit %s,%s"
         cursor = connection.cursor()
         print("----------", sql, pageNo, self.pageSize)
         params['index'] = ((params['pageNo'] - 1) * self.pageSize) + 1
         cursor.execute(sql, [pageNo, self.pageSize])
         result = cursor.fetchall()
-        columnName = ('id', 'vehicleId', 'vehicleName', 'vehicleType', 'purchaseDate', 'buyerName','tid')
+        columnName = ('id', 'vehicleId', 'vehicleName', 'vehicleType', 'purchaseDate', 'buyerName', 'tid')
         res = {
             "data": [],
             "MaxId": 1,
@@ -68,7 +66,7 @@ class VehicleService(BaseService):
         params["index"] = ((params['pageNo'] - 1) * self.pageSize) + 1
         cursor.execute(sql, [pageNo, self.pageSize])
         result = cursor.fetchall()
-        columnName = ('id', 'vehicleId', 'vehicleName', 'vehicleType', 'purchaseDate', 'buyerName','tid')
+        columnName = ('id', 'vehicleId', 'vehicleName', 'vehicleType', 'purchaseDate', 'buyerName', 'tid')
         res = {
             "data": [],
             "MaxId": 1,
@@ -84,4 +82,3 @@ class VehicleService(BaseService):
 
     def get_model(self):
         return Vehicle
-

@@ -6,6 +6,7 @@ class BaseService (ABC):
         print("0")
 
     def get(self, rid):
+        print("baseget")
         try:
             r = self.get_model().objects.get( id = rid)
             return r

@@ -42,6 +42,7 @@ class BaseCtl(ABC):
 
     def execute(self, request, params={}):
         print("This is execute")
+        print("request.method",request.method)
         self.preload(request,params)
         if "GET" == request.method:
             return self.display(request, params)

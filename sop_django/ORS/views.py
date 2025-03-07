@@ -54,6 +54,7 @@ def actionId(request, page="", operation="", id=0):
     path = request.META.get('PATH_INFO')
     print("VVVVVVVVVVVVVVVV", path)
     if request.session.get('user') is not None and page != "":
+        print("1")
         ctlName = page + "Ctl()"
         ctlObj = eval(ctlName)
         request.session['msg'] = None
@@ -72,6 +73,7 @@ def actionId(request, page="", operation="", id=0):
         res = ctlObj.execute(request, {"id": id})
     elif page == "Login":
         ctlName = page + "Ctl()"
+        print("2")
         ctlObj = eval(ctlName)
         request.session['msg'] = None
         print("MMMMMMMMMMM", request.session.get('msg'))

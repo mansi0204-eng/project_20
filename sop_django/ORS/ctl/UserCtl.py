@@ -36,10 +36,11 @@ class UserCtl(BaseCtl):
         # Polulate Form from Http request
 
     def request_to_form(self, requestForm):
+        print("req to form")
         self.form["id"] = requestForm["id"]
         self.form["firstName"] = requestForm["firstName"]
         self.form["lastName"] = requestForm["lastName"]
-        self.form["login_id"] = requestForm["login_id"]
+        self.form["login_id"] = requestForm["login_id"].strip()
         self.form["password"] = requestForm["password"]
         self.form["confirmpassword"] = requestForm["confirmpassword"]
         self.form["dob"] = requestForm["dob"]
@@ -52,6 +53,7 @@ class UserCtl(BaseCtl):
         # GET-DISPLAY method calls this function
 
     def model_to_form(self, obj):
+        print("model to f")
         if (obj == None):
             return
         self.form["id"] = obj.id
@@ -70,6 +72,7 @@ class UserCtl(BaseCtl):
         # Convert form into module
 
     def form_to_model(self, obj):
+        print("form to mod")
         c = RoleService().get(self.form['role_Id'])
         pk = int(self.form['id'])
         if pk > 0:
@@ -98,11 +101,11 @@ class UserCtl(BaseCtl):
         if (DataValidator.isNull(self.form["lastName"])):
             inputError["lastName"] = " Last Name can not be null"
             self.form["error"] = True
-        if (DataValidator.isNull(self.form["login_id"])):
+        if (DataValidator.isNull(self.form["login_id"].strip())):
             inputError["login_id"] = " login can not be null"
             self.form["error"] = True
         else:
-            if (DataValidator.isemail(self.form['login_id'])):
+            if (DataValidator.isemail(self.form['login_id'].strip())):
                 inputError['login_id'] = "login ID must be like student@gmail.com"
                 self.form['error'] = True
 
@@ -152,6 +155,7 @@ class UserCtl(BaseCtl):
 
     def display(self, request, params={}):
         if (params['id'] > 0):
+            print("dised")
             r = self.get_service().get(params['id'])
             self.model_to_form(r)
         res = render(request, self.get_template(), {'form': self.form})

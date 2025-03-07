@@ -46,7 +46,7 @@ class LoginCtl(BaseCtl):
             request.session["user"] = user
             request.session['name'] = user.role_Name
             if PATH is None:
-                res = redirect('/ORS/Welcome//')
+                res = redirect('/ORS/Welcome/')
             else:
                 res = redirect(PATH)
         return res
