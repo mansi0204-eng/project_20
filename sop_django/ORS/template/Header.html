@@ -236,7 +236,7 @@
 
             <li class="nav-item">
                 <h6 style="color:cyan;font-style: bold;" class="nav-link"> {{request.session.user.firstName}}
-                    {{request.session.user.lastName}}-(Admin)</h6>
+                    {{request.session.user.lastName}}-{{request.session.name}}</h6>
             </li>
             <li class="nav-item">
                 <h6 style="color:yellow;" class="nav-link"></h6>
@@ -283,7 +283,7 @@
 
             <li class="nav-item">
                 <h6 style="color:cyan;font-style: bold;" class="nav-link"> {{request.session.user.firstName}}
-                    {{request.session.user.lastName}}-(Student)</h6>
+                    {{request.session.user.lastName}}-{{request.session.name}}</h6>
             </li>
 
 
@@ -401,7 +401,7 @@
             </li>
             <li class="nav-item">
                 <h6 style="color:cyan;font-style: bold;" class="nav-link"> {{request.session.user.firstName}}
-                    {{request.session.user.lastName}}-(Faculty)</h6>
+                    {{request.session.user.lastName}}-{{request.session.name}}</h6>
             </li>
 
             {% elif request.session.name == "Kiosk" %}
@@ -512,7 +512,7 @@
                 </div>
             <li class="nav-item">
                 <h6 style="color:cyan;font-style: bold;" class="nav-link"> {{request.session.user.firstName}}
-                    {{request.session.user.lastName}}-(Kiosk)</h6>
+                    {{request.session.user.lastName}}-{{request.session.name}}</h6>
             </li>
 
             </li>

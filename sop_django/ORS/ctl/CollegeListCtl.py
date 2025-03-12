@@ -23,7 +23,7 @@ class CollegeListCtl(BaseCtl):
         CollegeListCtl.count = self.form['pageNo']
         record = self.get_service().search(self.form)
         self.page_list = record['data']
-        # self.form['LastId'] = College.objects.last().id
+        # self.form['LastId'] = College.objects.last()
         res = render(request, self.get_template(), {'pageList': self.page_list, 'form': self.form})
         return res
 

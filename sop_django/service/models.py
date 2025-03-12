@@ -475,3 +475,13 @@ class Staff (models.Model):
 
     class Meta:
         db_table='sos_staff'
+
+
+class Test(models.Model):
+    firstName=models.CharField(max_length=50)
+    lastName=models.CharField(max_length=50)
+    userName=models.CharField(max_length=50)
+
+    class Meta:
+        db_table="sos_test"
+

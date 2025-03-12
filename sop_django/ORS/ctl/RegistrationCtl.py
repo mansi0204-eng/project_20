@@ -155,6 +155,7 @@ class RegistrationCtl(BaseCtl):
             res = render(request, self.get_template(), {'form': self.form})
         else:
             print("ssssssssss")
+            print("ssssssssss")
             emsg = EmailMessege()
             emsg.to = [self.form['login_id']]
             e = {}
@@ -164,7 +165,7 @@ class RegistrationCtl(BaseCtl):
 
             mailResponse = EmailService.send(emsg, 'signUp', e)
             print("mailResponse:", mailResponse)  # Debugging step
-            if mailResponse:
+            if mailResponse==1:
                 print("aaaabbbb")
                 r = self.form_to_model(User())
                 self.get_service().save(r)
@@ -187,51 +188,3 @@ class RegistrationCtl(BaseCtl):
 
     def get_service(self):
         return UserService()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
