@@ -19,6 +19,7 @@ from .ctl.MarksheetListCtl import MarksheetListCtl
 from .ctl.MarksheetMeritListCtl import MarksheetMeritListCtl
 from .ctl.StaffCtl import StaffCtl
 from .ctl.StaffListCtl import StaffListCtl
+from .ctl.TestCtl import TestCtl
 
 from .ctl.RoleCtl import RoleCtl
 # from .ctl.RoleListCtl import RoleListCtl

@@ -115,7 +115,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False  # Ensure this is False
-EMAIL_HOST_USER = 'example@gmail.com'
+EMAIL_HOST_USER = 'abc@gmail.com'
 EMAIL_HOST_PASSWORD = 'pass123'  # Ensure this is an App Password
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
